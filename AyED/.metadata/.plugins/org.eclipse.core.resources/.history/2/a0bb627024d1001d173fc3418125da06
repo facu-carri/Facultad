@@ -1,0 +1,10 @@
+import tp02.ejercicio2.*;
+import tp01.Estudiante;
+
+public class Ej2 {
+
+	public static void main(String[] args) {
+		ListaGenerica<Estudiante> lista = new ListaEnlazadaGenerica<Estudiante>();
+		lista.agregarFinal(new Estudiante("Josue", "Juarez", "1A", "pjuarez@info.com", "C. 13 600"));
+	}
+}

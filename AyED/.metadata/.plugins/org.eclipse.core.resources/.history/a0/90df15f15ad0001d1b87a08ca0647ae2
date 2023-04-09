@@ -1,0 +1,32 @@
+import java.util.List;
+
+import tp02.ejercicio1.*;
+
+public class main1
+{
+	public static void main(String[] args)
+	{
+		ListaDeEnteros lista = new ListaDeEnterosEnlazada();
+	}
+	
+	private void printListaReversa(ListaDeEnteros lista){
+		int dato = lista.proximo();
+		if(!lista.fin()){
+			printListaReversa(lista);
+		}
+		System.out.println(dato);
+	}
+	
+	private ListaDeEnteros printSucesion(int num){
+		
+	}
+	
+	private void recursion(int num){
+		System.out.print(num);
+		if(num % 2 == 0){
+			recursion(num/2);
+		}else{
+			recursion(3*num + 1);
+		}
+	}
+}

@@ -1,0 +1,9 @@
+package tp02.ejercicio3;
+
+import tp02.ejercicio2.*;
+
+private ListaGenerica<T> datos;
+
+public class ColaGenerica<T> {
+
+}

@@ -1,0 +1,19 @@
+import java.util.List;
+
+import tp02.ejercicio1.*;
+
+public class main1
+{
+	public static void main(String[] args)
+	{
+		ListaDeEnteros lista = new ListaDeEnterosEnlazada();
+	}
+	
+	private void printListaReversa(ListaDeEnterosEnlazada lista){
+		int dato = lista.proximo();
+		if(!lista.fin()){
+			printListaReversa(lista);
+		}
+		System.out.println(dato);
+	}
+}

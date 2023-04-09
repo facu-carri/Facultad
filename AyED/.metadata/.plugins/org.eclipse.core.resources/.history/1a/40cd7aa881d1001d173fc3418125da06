@@ -1,0 +1,18 @@
+import tp02.ejercicio2.*;
+import tp02.ejercicio3.PilaGenerica;
+public class Ej3
+{
+	public static void main(String[] args)
+	{
+		// [ ( { } ) ]
+		// { ( [
+	}
+	
+	public boolean balanced(String cadena){
+		PilaGenerica<Character> pila = new PilaGenerica();
+		for (Character c : cadena){
+			
+		}
+		return true;
+	}
+}

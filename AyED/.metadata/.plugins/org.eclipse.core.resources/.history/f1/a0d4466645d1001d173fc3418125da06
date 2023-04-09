@@ -1,0 +1,18 @@
+package tp02.ejercicio3;
+
+import tp02.ejercicio2.*;
+
+public class ColaGenerica<T>
+{
+	private ListaGenerica<T> datos;
+	
+	public ColaGenerica(){}
+	
+	public void encolar(T elem){
+		datos.agregarFinal(elem);
+	}
+	
+	public static desencolar(){
+		
+	}
+}

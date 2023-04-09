@@ -1,0 +1,19 @@
+programa Ejercicio-1-a
+areas
+  ciudad : AreaC(1,1,100,100)
+robots 
+  robot tipo1
+  variables
+    init : boolean
+  comenzar
+    Pos (20,20)
+    init := V
+    mientras(init and PosCa < 99)
+      mover
+  fin
+variables 
+  robot1: tipo1
+comenzar 
+  AsignarArea(robot1,ciudad)
+  Iniciar(robot1, 10, 10)
+fin

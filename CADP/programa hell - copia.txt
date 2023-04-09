@@ -1,0 +1,103 @@
+programa hell
+procesos
+  proceso recorrerEsquinas (ES papeles:numero; E esquinas:numero)
+  comenzar
+    repetir esquinas
+      recolectar(papeles)
+      mover
+    recolectar(papeles)
+  fin
+  proceso recolectar (ES papeles:numero)
+  comenzar
+    si (HayPapelEnLaEsquina)
+      tomarPapel
+      papeles := papeles + 1
+    si (HayFlorEnLaBolsa)
+      depositarFlor
+  fin
+areas
+  areaR1 : AreaP(1,1,1,100)
+  areaR2 : AreaP(2,1,2,100)
+  areaR3 : AreaP(3,1,3,100)
+  areaFiscal : AreaP(4,1,4,1)
+  areaFlores : AreaC(80,80,80,80)
+robots
+  robot recolector
+  variables
+    papeles, initAv, initCa, id, ack : numero
+  comenzar
+    papeles := 0
+    initAv := PosAv
+    initCa := PosCa
+    RecibirMensaje(id, fiscal)
+    repetir 9
+      EnviarMensaje(id, fiscal)
+      recorrerEsquinas(papeles, 10)
+      EnviarMensaje(1, fiscal)
+      RecibirMensaje(ack, fiscal)
+    BloquearEsquina(80, 80)
+    Pos(80,80)
+    repetir papeles
+      depositarPapel
+    Pos(initAv, initCa)
+    LiberarEsquina(80, 80)
+    EnviarMensaje(1, fiscal)
+  fin
+  robot fiscalizador
+  variables
+    id, terminar, finish, local : numero
+  comenzar
+    terminar := 0
+    EnviarMensaje(1, r1)
+    EnviarMensaje(2, r2)
+    EnviarMensaje(3, r3)
+    mientras (terminar < 30)
+      RecibirMensaje(id, *)
+      si id = 1
+        RecibirMensaje(finish, r1)
+        terminar := terminar + 1
+        EnviarMensaje(0, r1)
+      sino
+        si id = 2
+          RecibirMensaje(finish, r2)
+          terminar := terminar + 1
+          EnviarMensaje(0, r2)
+        sino
+          EnviarMensaje(0, r3)
+          RecibirMensaje(finish, r3)
+          terminar := terminar + 1
+      local := local + 1
+      si (local = 3)
+        EnviarMensaje(0, r1)
+        EnviarMensaje(0, r2)
+        EnviarMensaje(0, r3)
+        local := 0
+    repetir 3
+      RecibirMensaje(finish, *)
+    Pos(80, 80)
+    finish := 0
+    mientras (HayPapelEnLaEsquina)
+      finish := finish + 1
+      tomarPapel
+    Informar('Papeles_', finish)
+  fin
+variables
+  r1 : recolector
+  r2 : recolector
+  r3 : recolector
+  fiscal : fiscalizador
+comenzar
+  AsignarArea(r1,areaR1)
+  AsignarArea(r1,areaFlores)
+  AsignarArea(r2,areaR2)
+  AsignarArea(r2,areaFlores)
+  AsignarArea(r3,areaR3)
+  AsignarArea(r3,areaFlores)
+  AsignarArea(fiscal,areaFiscal)
+  AsignarArea(fiscal,areaFlores)
+  Iniciar(r1,1,1)
+  Iniciar(r2,2,1)
+  Iniciar(r3,3,1)
+  Iniciar(fiscal,4,1)
+fin
+

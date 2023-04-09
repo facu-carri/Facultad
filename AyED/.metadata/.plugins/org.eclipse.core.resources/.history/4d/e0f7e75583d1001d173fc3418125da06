@@ -1,0 +1,21 @@
+import tp02.ejercicio2.*;
+import tp02.ejercicio3.PilaGenerica;
+public class Ej3
+{
+	public static void main(String[] args)
+	{
+		balanced("wasd");
+	}
+	
+	private static String apertura = "[({";
+	private static String cierre = "])}";
+	
+	public static boolean balanced(String cadena){
+		PilaGenerica<Character> pila = new PilaGenerica();
+		if(cadena.length() == 0) return true;
+		for (Character c : cadena.toCharArray()){
+			if(apertura)
+		}
+		return true;
+	}
+}
