@@ -23,7 +23,7 @@ type
 procedure leer(var arc:log; var reg:sesion);
 begin
 	if(not eof(arc))then
-		write(arc, reg)
+		read(arc, reg)
 	else
 		reg.codigo := valorAlto;
 end;

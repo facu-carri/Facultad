@@ -18,7 +18,7 @@ type
 procedure leer(var arc:arc_d; var a:alumnoDetalle);
 begin
 	if(not eof(arc))then
-		write(arc, a)
+		read(arc, a)
 	else
 		a.codigo := valorAlto;
 end;
