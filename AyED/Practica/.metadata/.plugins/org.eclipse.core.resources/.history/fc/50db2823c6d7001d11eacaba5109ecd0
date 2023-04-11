@@ -1,0 +1,66 @@
+package Practica3;
+import tp03.ejercicio1.*;
+
+public class Ej2
+{
+	public static void main(String[] args)
+	{
+		ArbolBinario<Integer> arbol = new ArbolBinario<Integer>();
+		ArbolBinario<Integer> arbolRef = arbol;
+		agregar(arbol, 5);
+		agregar(arbol, 6);
+		agregar(arbol, 3);
+		agregar(arbol, 7);
+		System.out.println(arbolRef.contarHojas());
+	}
+	
+	private static ArbolBinario<Integer> crearNodo(Integer dato){
+		return new ArbolBinario<Integer>(dato);
+	}
+	
+	/*private static void agregarIzq(ArbolBinario<Integer> arbol, Integer dato){
+		ArbolBinario<Integer> init = arbol;
+		while(!arbol.esHoja()){
+			arbol = arbol.getHijoIzquierdo();
+		}
+		arbol.agregarHijoIzquierdo(crearNodo(dato));
+		arbol = init;
+	}*/
+	
+	private static void agregar(ArbolBinario<Integer> arbol, Integer dato)
+	{
+		if(!arbol.esVacio()){
+			if(dato < arbol.getDato()){
+				agregar(arbol.getHijoIzquierdo(), dato);
+			}else{
+				agregar(arbol.getHijoDerecho(), dato);
+			}
+		}else{
+			arbol = crearNodo(dato);
+		}
+	}
+	
+	/*
+	private static void agregar(ArbolBinario<Integer> arbol, Integer dato)
+	{
+		if(!arbol.esVacio()){
+			if(dato < arbol.getDato()){
+				if(arbol.getHijoIzquierdo() == null){
+					arbol.agregarHijoIzquierdo(crearNodo(dato));
+				}else{
+					agregar(arbol.getHijoIzquierdo(), dato);
+				}
+			}else{
+				if(arbol.getHijoDerecho() == null){
+					arbol.agregarHijoDerecho(crearNodo(dato));
+				}else{
+					agregar(arbol.getHijoDerecho(), dato);
+				}
+			}
+		}else{
+			arbol = crearNodo(dato);
+		}
+	}*/
+	 */
+	
+}

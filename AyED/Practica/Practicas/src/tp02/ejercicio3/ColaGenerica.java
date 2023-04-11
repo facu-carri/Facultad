@@ -14,7 +14,8 @@ public class ColaGenerica<T>
 		datos.agregarFinal(elem);
 	}
 	
-	public T desencolar(){
+	public T desencolar()
+	{
 		T elem = datos.elemento(1);
 		datos.eliminarEn(1);
 		return elem;

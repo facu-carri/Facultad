@@ -1,0 +1,7 @@
+package Practica3;
+import tp03.ejercicio1.*;
+
+public static void main(String[] args)
+{
+	
+}

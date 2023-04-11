@@ -1,0 +1,40 @@
+package Practica3;
+import tp03.ejercicio1.*;
+
+public class Ej2
+{
+	public static void main(String[] args)
+	{
+		ArbolBinario<Integer> arbol = new ArbolBinario<Integer>(3);
+		agregarIzq(arbol, 5);
+		agregarIzq(arbol, 5);
+		arbol.agregarHijoDerecho(crearNodo(5));
+		//System.out.println(arbol.tieneHijoIzquierdo());
+		System.out.println(arbol.contarHojas());
+	}
+	
+	private static ArbolBinario<Integer> crearNodo(Integer dato){
+		ArbolBinario<Integer> arbol = new ArbolBinario<Integer>(dato);
+		return arbol;
+	}
+	
+	private static void agregarIzq(ArbolBinario<Integer> arbol, Integer dato){
+		ArbolBinario<Integer> init = arbol;
+		while(!arbol.esHoja()){
+			arbol = arbol.getHijoIzquierdo();
+		}
+		arbol.agregarHijoIzquierdo(crearNodo(dato));
+		arbol = init;
+	}
+	
+	private static void agregar(ArbolBinario<Integer> arbol, Integer dato)
+	{
+		if(arbol.tieneHijoIzquierdo()){
+			agregar(arbol.getHijoIzquierdo(), dato);
+		}
+		if(arbol.tieneHijoDerecho()){
+			agregar(arbol.getHijoDerecho(), dato)
+		}
+	}
+	
+}

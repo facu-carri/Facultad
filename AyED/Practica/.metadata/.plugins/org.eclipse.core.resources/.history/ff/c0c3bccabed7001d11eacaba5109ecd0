@@ -1,0 +1,15 @@
+package Practica3;
+import tp03.ejercicio1.*;
+
+public class Ej2
+{
+	public static void main(String[] args)
+	{
+		ArbolBinario<Integer> arbol = new ArbolBinario<Integer>(3);
+		System.out.println(arbol.contarHojas());
+	}
+	
+	private ArbolBinario<T> crearNodo(T dato){
+		
+	}
+}

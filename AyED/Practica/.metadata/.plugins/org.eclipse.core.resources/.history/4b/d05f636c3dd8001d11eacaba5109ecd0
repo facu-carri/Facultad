@@ -1,0 +1,10 @@
+package Practica3;
+
+public class ContadorArbol {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
