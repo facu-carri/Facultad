@@ -1,2 +1,2 @@
 # **Facultad
-Repositorio que contiene material tería/práctico de la facultad.
+Repositorio que contiene material teoría/práctico de la facultad.
