@@ -1,8 +1,0 @@
-import tp02.ejercicio1.*;
-
-public class TestListaEnlazadaGenerica {
-
-	public static void main(String[] args) {
-		
-	}
-}

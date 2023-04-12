@@ -1,7 +1,0 @@
-package Practica3;
-import tp03.ejercicio1.*;
-
-public class Ej2
-{
-	ArbolBinario<Integer> arbol = new ArbolBinario<Integer>();
-}
