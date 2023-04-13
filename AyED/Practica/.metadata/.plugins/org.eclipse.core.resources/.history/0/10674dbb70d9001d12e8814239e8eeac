@@ -1,0 +1,18 @@
+package Practica3;
+
+import tp03.ejercicio1.*;
+
+public class ProfundidadDeArbolBinario {
+
+	private ArbolBinario<Integer> arbol;
+	
+	public ProfundidadDeArbolBinario(ArbolBinario<Integer> arbol){
+		this.arbol = arbol;
+	}
+	
+	public int sumaElementosProfundidad(int p){
+		//usar una queue
+		//validar el tamaño del arbol
+		int suma = recorrerNiveles(p);
+	}
+}

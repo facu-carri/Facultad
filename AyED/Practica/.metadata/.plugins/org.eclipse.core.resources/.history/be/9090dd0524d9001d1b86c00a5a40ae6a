@@ -1,0 +1,30 @@
+package Practica3;
+import tp02.ejercicio3.PilaGenerica;
+import tp03.ejercicio1.*;
+public class ContadorArbol {
+
+	private ArbolBinario<Integer> arbol;
+	
+	public ContadorArbol(ArbolBinario<Integer> arbol){
+		this.arbol = arbol;
+	}
+	
+	public PilaGenerica<Integer> numerosPares(){
+		PilaGenerica<Integer> pila = new PilaGenerica<Integer>();
+		inOrden(arbol, pila);
+		return pila;
+	}
+	
+	private void inOrden(ArbolBinario<Integer> arbol, PilaGenerica<Integer> pila){
+		if(arbol.getDato() % 2 == 0){
+			pila.apilar(arbol.getDato());
+			System.out.println("Apilo " + arbol.getDato());
+		}
+		if(arbol.tieneHijoIzquierdo()){
+			inOrden(arbol.getHijoIzquierdo(), pila);
+		}
+		if(arbol.tieneHijoDerecho()){
+			inOrden(arbol.getHijoDerecho(), pila);
+		}
+	}
+}

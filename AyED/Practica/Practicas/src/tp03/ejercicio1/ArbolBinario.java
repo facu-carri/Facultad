@@ -83,72 +83,88 @@ public class ArbolBinario<T> {
 
 	public int contarHojas()
 	{
-		if(this.esHoja() && !this.esVacio()){
+		if(this.esHoja()){
 			return 1;
 		}
-		int cant = 0;
+		int cantHojas = 0;
 		if(this.tieneHijoIzquierdo()){
-			cant += this.getHijoIzquierdo().contarHojas();
+			cantHojas += this.getHijoIzquierdo().contarHojas();
 		}
 		if(this.tieneHijoDerecho()){
-			cant += this.getHijoDerecho().contarHojas();
+			cantHojas += this.getHijoDerecho().contarHojas();
 		}
-		return cant;
-		//return preorder(this);
+		return cantHojas;
 	}
 	
-	/*private int preorder(ArbolBinario<T> arbol){
-		if(arbol.esHoja() && !arbol.esVacio()){
-			return 1;
+	public int contarNodos()
+	{
+		if(this.esVacio()){
+			return 0;//caso arbol vacío
 		}
-		int cant = 0;
-		if(arbol.tieneHijoIzquierdo()){
-			cant += this.preorder(arbol.getHijoIzquierdo());
+		if(this.esHoja()){
+			return 1;//llego al último nodo, caso baso (retorno porque sino error)
 		}
-		if(arbol.tieneHijoDerecho()){
-			cant += this.preorder(arbol.getHijoDerecho());
+		int cantNodos = 1;//me cuento a mi mismo
+		if(this.tieneHijoIzquierdo()){
+			cantNodos += this.getHijoIzquierdo().contarNodos();
 		}
-		return cant;
-	}*/
+		if(this.tieneHijoDerecho()){
+			cantNodos += this.getHijoDerecho().contarNodos();
+		}
+		return cantNodos;
+	}
+	
+	public int totalDatos()
+	{
+		if(this.esVacio()){
+			return 0;//caso arbol vacío
+		}
+		int cantTotal = 0;
+		if(this.tieneHijoIzquierdo()){
+			cantTotal += this.getHijoIzquierdo().totalDatos();
+		}
+		if(this.tieneHijoDerecho()){
+			cantTotal += this.getHijoDerecho().totalDatos();
+		}
+		return (Integer) this.getDato() + cantTotal;
+	}
 
     public ArbolBinario<T> espejo()
     {
-    	ArbolBinario<T> doble = new ArbolBinario<T>(this.getDato());
-		if(this.tieneHijoIzquierdo()){
-			doble.agregarHijoDerecho(hijoIzquierdo.espejo());
-		}
-		if(this.tieneHijoDerecho()){
-			doble.agregarHijoIzquierdo(hijoDerecho.espejo());
-		}
-		return doble;
+    	ArbolBinario<T> arbol = new ArbolBinario<T>(this.getDato());
+    	//si no tiene hijos, regresa un nodo con el dato (sería la hoja)
+    	if(this.tieneHijoIzquierdo()){
+    		arbol.agregarHijoDerecho(this.hijoIzquierdo.espejo());
+    	}
+    	if(this.tieneHijoDerecho()){
+    		arbol.agregarHijoIzquierdo(this.hijoDerecho.espejo());
+    	}
+    	return arbol;
 	}
-
 
     public void entreNiveles(int n, int m)
     {
-        ColaGenerica<ArbolBinario<T>> queue = new ColaGenerica<ArbolBinario<T>>(); //First in, First Out
-        queue.encolar(this);
-        queue.encolar(null);
-        int nivelActual = 1;
-        ArbolBinario<T> nodo;
-        while(!queue.esVacia()){
-            nodo = queue.desencolar();
-            if(nodo != null){
-                if(nivelActual >= n && nivelActual <= m){
-                    System.out.println(nodo.getDato());
-                }
-                if(nodo.tieneHijoIzquierdo()){
-                    queue.encolar(nodo.getHijoIzquierdo());
-                }
-                if(nodo.tieneHijoDerecho()){
-                    queue.encolar(nodo.getHijoDerecho());
-                }
-            }else{
-                if(!queue.esVacia()){
-                    nivelActual = nivelActual + 1;
-                    queue.encolar(null);
-                }
-            }
-        }
+    	ColaGenerica<ArbolBinario<T>> cola = new ColaGenerica<ArbolBinario<T>>();
+    	cola.encolar(this);
+    	cola.encolar(null);
+    	int level = 1;
+    	while(!cola.esVacia()){
+    		ArbolBinario<T> nodo = cola.desencolar();
+    		if(nodo != null){
+    			if(level >= n && level <= m){
+    				System.out.println(nodo.getDato());
+    			}
+    			if(nodo.tieneHijoIzquierdo()){
+    				cola.encolar(nodo.getHijoIzquierdo());
+    			}
+    			if(nodo.tieneHijoDerecho()){
+    				cola.encolar(nodo.getHijoDerecho());
+    			}
+    		}else{
+    			level++;
+    			cola.encolar(null);
+    		}
+    	}
+    	
     }
 }
