@@ -1,5 +1,5 @@
 package Practica3;
-import tp02.ejercicio3.ColaGenerica;
+//import tp02.ejercicio3.ColaGenerica;
 import tp03.ejercicio1.*;
 
 public class Ej2
