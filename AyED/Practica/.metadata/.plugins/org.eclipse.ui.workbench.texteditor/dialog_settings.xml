@@ -8,6 +8,7 @@
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="public static ListaGenerica&lt;Integer&gt; numerosImparesMayoresQuePostOrden(ArbolGeneral&lt;Integer&gt; a, Integer n){"/>
 			<item value="dato"/>
 			<item value="tamanio"/>
 			<item value="NodoEntero"/>
