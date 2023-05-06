@@ -6,7 +6,6 @@ public class ArbolBinario<T> {
 	private T dato;
 	private ArbolBinario<T> hijoIzquierdo;   
 	private ArbolBinario<T> hijoDerecho; 
-
 	
 	public ArbolBinario() {
 		super();
@@ -63,7 +62,6 @@ public class ArbolBinario<T> {
 
 	public boolean esHoja() {
 		return (!this.tieneHijoIzquierdo() && !this.tieneHijoDerecho());
-
 	}
 
 	@Override
@@ -165,6 +163,5 @@ public class ArbolBinario<T> {
     			cola.encolar(null);
     		}
     	}
-    	
     }
 }

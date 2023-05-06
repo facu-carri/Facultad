@@ -1,0 +1,39 @@
+package Parciales;
+
+import tp02.ejercicio1.*;
+
+public class ListaParcial2 {
+	private ListaDeEnterosEnlazada lista;
+	private int pares;
+	
+	public ListaParcial2(){
+		lista = new ListaDeEnterosEnlazada();
+		pares = 0;
+	}
+	
+	public ListaDeEnterosEnlazada getLista(){
+		return lista;
+	}
+	
+	public int getPares(){
+		return pares;
+	}
+	
+	public void setPares(int pares){
+		this.pares = pares;
+	}
+	
+	public void setLista(ListaDeEnterosEnlazada lista){
+		this.lista = lista;
+	}
+	
+	public String toString(){
+		String str = "Pares: " + pares;
+		str += "\n";
+		lista.comenzar();
+		while(!lista.fin()){
+			str += lista.proximo() + " => ";
+		}
+		return str;
+	}
+}

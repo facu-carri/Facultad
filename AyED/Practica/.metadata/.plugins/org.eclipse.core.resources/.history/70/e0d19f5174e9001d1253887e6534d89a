@@ -1,0 +1,18 @@
+package Parciales;
+
+import tp02.ejercicio1.*;
+import tp02.ejercicio2.ListaGenerica;
+import tp03.ejercicio1.ArbolBinario;
+
+public class TestParcial
+{
+	public TestParcial(){
+		ArbolBinario<Integer> arbol = new ArbolBinario<Integer>();
+		ProcesadorDeArbol parcial = new ProcesadorDeArbol(arbol);
+		ListaDeEnterosEnlazada list = parcial.procesar();
+		list.comenzar();
+		while(!list.fin()){
+			System.out.print(list.proximo() + " - ");
+		}
+	}
+}

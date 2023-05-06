@@ -1,0 +1,9 @@
+package Parciales;
+
+public class TestParcial
+{
+	public TestParcial(){
+		ProcesadorDeArbol parcial = new ProcesadorDeArbol(arbol);
+		System.out.println(parcial.procesar().toString())
+	}
+}

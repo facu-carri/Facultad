@@ -1,0 +1,21 @@
+package Parciales;
+
+import tp02.ejercicio1.*;
+
+public class ListaParcial {
+	private ListaDeEnterosEnlazada lista;
+	private int pares;
+	
+	public ListaDeEnterosEnlazada getLista(){
+		return lista;
+	}
+	
+	public int getPares(){
+		return pares;
+	}
+	
+	public void setPares(int dato){
+		this.pares = dato;
+	}
+	
+}

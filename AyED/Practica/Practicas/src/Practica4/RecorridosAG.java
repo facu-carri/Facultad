@@ -1,6 +1,7 @@
 package Practica4;
 
 import tp02.ejercicio2.*;
+import tp02.ejercicio3.*;
 import tp04.ejercicio1.ArbolGeneral;
 
 public class RecorridosAG
@@ -30,10 +31,13 @@ public class RecorridosAG
 		aux.agregarHijo(new ArbolGeneral<Integer>(68));
 		aux.agregarHijo(new ArbolGeneral<Integer>(11));
 		aux.agregarHijo(new ArbolGeneral<Integer>(51));
+		aux.getHijos().comenzar();
+		aux.getHijos().proximo().agregarHijo(new ArbolGeneral<Integer>(33));
 		arbol.agregarHijo(aux);
 		//53 19 6 33 77 80 61 15 1 4 68 11 51
-		ListaEnlazadaGenerica<Integer> list = (ListaEnlazadaGenerica<Integer>)numerosImparesMayoresQuePostOrden(arbol, 1);
-		System.out.println(list.toString());
+		//ListaEnlazadaGenerica<Integer> list = (ListaEnlazadaGenerica<Integer>)numerosImparesMayoresQuePorNiveles(arbol, 1);
+		//RedDeAguaPotable test = new RedDeAguaPotable(arbol);
+		System.out.println(arbol.esAncestro_2(53,33));
 	}
 	
 	private static boolean esImparMayor(int dato, int n){
@@ -98,18 +102,22 @@ public class RecorridosAG
 	}
 	
 	public static ListaGenerica<Integer> numerosImparesMayoresQuePorNiveles(ArbolGeneral<Integer> a, Integer n){
-		ListaGenerica<Integer> list = new ListaEnlazadaGenerica<Integer>();		
-		if(a.tieneHijos()){
-			ListaGenerica<ArbolGeneral<Integer>> hijos = a.getHijos();
-			while(!hijos.fin()){
-				ListaGenerica<Integer> lista = numerosImparesMayoresQuePostOrden(hijos.proximo(), n);
-				while(!lista.fin()){
-					list.agregarFinal(lista.proximo());
+		ListaGenerica<Integer> list = new ListaEnlazadaGenerica<Integer>();
+		ColaGenerica<ArbolGeneral<Integer>> cola = new ColaGenerica<ArbolGeneral<Integer>>();
+		cola.encolar(a);
+		cola.encolar(null);
+		while(!cola.esVacia()){
+			ArbolGeneral<Integer> ar = cola.desencolar();
+			if(ar != null){
+				list.agregarFinal(ar.getDato());
+				ListaGenerica<ArbolGeneral<Integer>> hijos = ar.getHijos();
+				hijos.comenzar();
+				while(!hijos.fin()){
+					cola.encolar(hijos.proximo());
 				}
+			}else if(!cola.esVacia()){///en caso de que sea null el que desencolo, pregunto si no hay mas elementos
+				cola.encolar(null);
 			}
-		}
-		if(esImparMayor(a.getDato(), n)){
-			list.agregarFinal(a.getDato());
 		}
 		return list;
 	}

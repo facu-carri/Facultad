@@ -14,7 +14,7 @@ public class test {
 		hijos.agregarFinal(a1);
 		hijos.agregarFinal(a2);
 		hijos.agregarFinal(a3);
-		ArbolGeneral<String> a = new ArbolGeneral<String>("0", hijos);
-		System.out.println("Datos del Arbol: "+a.preOrden());
+		//ArbolGeneral<String> a = new ArbolGeneral<String>("0", hijos);
+		System.out.println("Datos del Arbol: ");//a.preOrden());
 	}
 }

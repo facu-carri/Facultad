@@ -1,0 +1,17 @@
+package Parciales;
+
+import tp04.ejercicio1.ArbolGeneral;
+
+public class RedDeAguaPotable {
+
+	private ArbolGeneral<Integer> arbol;
+	
+	public static void main(String[] args)
+	{
+
+	}
+	
+	public double minimoCaudal(double caudal){
+		
+	}
+}

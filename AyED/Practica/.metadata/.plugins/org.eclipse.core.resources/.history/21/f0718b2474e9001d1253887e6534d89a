@@ -1,0 +1,12 @@
+package Parciales;
+
+import tp02.ejercicio1.*;
+import tp02.ejercicio2.ListaGenerica;
+
+public class TestParcial
+{
+	public TestParcial(){
+		ProcesadorDeArbol parcial = new ProcesadorDeArbol(arbol);
+		ListaGenerica<Integer> list = parcial.procesar();
+	}
+}

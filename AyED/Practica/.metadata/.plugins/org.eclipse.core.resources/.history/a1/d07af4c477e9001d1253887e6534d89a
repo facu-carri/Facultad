@@ -1,0 +1,41 @@
+package Parciales;
+
+import tp02.ejercicio1.ListaDeEnterosEnlazada;
+import tp03.ejercicio1.ArbolBinario;
+
+public class ProcesadorDeArbol {
+	
+	private ArbolBinario<Integer> arbol;
+	
+	public ProcesadorDeArbol(ArbolBinario<Integer> arbol){
+		this.arbol = arbol;
+	}
+	
+	public ListaParcial procesar()
+	{
+		//Pre orden: Ver Izq Der
+		ListaParcial lista = new ListaParcial();
+		ListaDeEnterosEnlazada aux;
+		if(arbol.getDato() % 2 != 0){
+			if(arbol.tieneHijoDerecho() && arbol.tieneHijoIzquierdo()){
+				lista.getLista().agregarFinal(arbol.getDato());// lista.agregarFinal(arbol.getDato());
+			}
+			lista.setPares(lista.getPares() + 1);
+		}
+		if(arbol.tieneHijoIzquierdo()){
+			aux = new ProcesadorDeArbol(arbol.getHijoIzquierdo()).procesar().getLista();
+			aux.comenzar();
+			while(!aux.fin()){
+				lista.getLista().agregarFinal(aux.proximo());
+			}
+		}
+		if(arbol.tieneHijoDerecho()){
+			aux = new ProcesadorDeArbol(arbol.getHijoDerecho()).procesar().getLista();
+			aux.comenzar();
+			while(!aux.fin()){
+				lista.getLista().agregarFinal(aux.proximo());
+			}
+		}
+		return lista;
+	}
+}

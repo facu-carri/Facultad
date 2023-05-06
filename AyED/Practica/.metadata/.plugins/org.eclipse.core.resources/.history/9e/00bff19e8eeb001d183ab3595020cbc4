@@ -1,0 +1,14 @@
+package Parciales;
+
+import tp03.ejercicio1.*;
+
+public class Parcial_Ej2 {
+	
+	public static void main(String[] args) {
+		
+	}
+	
+	public Integer sumalmparesPosOrderMayorA(ArbolBinario<Integer> ab, int limite){
+		return 1;
+	}
+}

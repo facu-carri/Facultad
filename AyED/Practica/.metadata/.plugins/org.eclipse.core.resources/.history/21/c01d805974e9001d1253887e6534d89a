@@ -1,0 +1,23 @@
+package Parciales;
+
+import tp02.ejercicio1.*;
+import tp02.ejercicio2.ListaGenerica;
+import tp03.ejercicio1.ArbolBinario;
+
+public class TestParcial
+{
+	public TestParcial(){
+		ArbolBinario<Integer> arbol = new ArbolBinario<Integer>(1);
+		agregarIzq(arbol, 2);
+		agregarIzq(arbol, 4);
+		arbol.getHijoIzquierdo().agregarHijoDerecho(crearNodo(5));
+		arbol.agregarHijoDerecho(crearNodo(3));
+		arbol.getHijoDerecho().agregarHijoDerecho(crearNodo(6));
+		ProcesadorDeArbol parcial = new ProcesadorDeArbol(arbol);
+		ListaDeEnterosEnlazada list = parcial.procesar();
+		list.comenzar();
+		while(!list.fin()){
+			System.out.print(list.proximo() + " - ");
+		}
+	}
+}

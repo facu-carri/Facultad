@@ -1,0 +1,41 @@
+package Parciales;
+
+import tp02.ejercicio2.ListaEnlazadaGenerica;
+import tp02.ejercicio2.ListaGenerica;
+import tp03.ejercicio1.ArbolBinario;
+
+public class Parcial {
+
+	public ListaGenerica<Integer> resolver(ArbolBinario<Integer> ab, int min){
+		ListaGenerica<Integer> lista = new ListaEnlazadaGenerica<Integer>();
+		ListaGenerica<Integer> aux;
+		if(ab.getDato() % 2 == 0){
+			min--;
+		}
+		if(ab.esHoja()){
+			if(min <= 0){
+				lista.agregarFinal(ab.getDato());
+				return lista;
+			}else{
+				return null;
+			}
+		}else{
+			if(ab.tieneHijoIzquierdo()){
+				aux = resolver(ab.getHijoIzquierdo(), min);
+				if(aux != null){
+					while(!aux.fin()){
+						lista.agregarFinal(aux.proximo());
+					}
+				}
+			}
+			if(ab.tieneHijoDerecho()){
+				aux = resolver(ab.getHijoDerecho(), min);
+					while(!aux.fin()){
+						lista.agregarFinal(aux.proximo());
+					}
+				}
+			}
+		}
+		return lista;
+	}
+}

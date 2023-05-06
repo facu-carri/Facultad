@@ -1,0 +1,22 @@
+package Parciales;
+
+import tp02.ejercicio3.ColaGenerica;
+import tp03.ejercicio1.ArbolBinario;
+
+public class Parcial_Ej4 {
+
+	public static void main(String[] args) {
+		
+	}
+	
+	public boolean esArbolCreciente(ArbolBinario<Integer> arbol){
+		ColaGenerica<ArbolBinario<Integer>> cola = new ColaGenerica<ArbolBinario<Integer>>();
+		cola.encolar(arbol);
+		cola.encolar(null);
+		int nivelActual = 0;
+		while(!cola.esVacia()){
+			
+		}
+		return false;
+	}
+}

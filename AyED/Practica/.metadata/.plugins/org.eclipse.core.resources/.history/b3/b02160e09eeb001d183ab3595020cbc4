@@ -1,0 +1,14 @@
+package Parciales;
+
+import tp03.ejercicio1.ArbolBinario;
+
+public class Parcial_Ej4 {
+
+	public static void main(String[] args) {
+		
+	}
+	
+	public boolean esArbolCreciente(ArbolBinario<Integer> arbol){
+		return false;
+	}
+}

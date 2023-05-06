@@ -1,0 +1,45 @@
+package Parciales;
+
+import tp02.ejercicio1.ListaDeEnterosEnlazada;
+import tp02.ejercicio2.ListaEnlazadaGenerica;
+import tp02.ejercicio2.ListaGenerica;
+import tp03.ejercicio1.ArbolBinario;
+import tp04.ejercicio1.ArbolGeneral;
+
+public class Parcial_Ej3 {
+
+	private static ArbolGeneral<Integer> arbol;
+	
+	public static void main(String[] args) {
+		
+	}
+	
+	public Parcial_Ej3(ArbolGeneral<Integer> arbol){
+		this.arbol = arbol;
+	}
+	
+	public static ListaGenerica<Integer> resolver(){
+		ListaEnlazadaGenerica<Integer> lista = new ListaEnlazadaGenerica<Integer>();
+		resolver_helper(arbol, lista);
+		return lista;
+	}
+	
+	public static ListaGenerica<Integer> resolver_helper(ArbolGeneral<Integer> ab, ListaEnlazadaGenerica<Integer> lista){
+		ListaEnlazadaGenerica<Integer> aux = new ListaEnlazadaGenerica<Integer>();
+		ListaGenerica<ArbolGeneral<Integer>> hijos = ab.getHijos();
+		hijos.comenzar();
+		while(!hijos.fin()){
+			ListaGenerica<Integer> listaHijos = resolver_helper(hijos.proximo(), lista);
+			if(hijos.tamanio() % 2 != 0){
+				listaHijos.comenzar();
+				int cont = 0;
+				while(!listaHijos.fin()){
+					cont += listaHijos.proximo();
+				}
+				lista.agregarFinal(cont);
+			}
+		}
+		aux.agregarFinal(ab.getDato());
+		return aux;
+	}
+}

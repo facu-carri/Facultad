@@ -1,0 +1,22 @@
+package Parciales;
+
+import tp02.ejercicio2.ListaEnlazadaGenerica;
+import tp04.ejercicio1.ArbolGeneral;
+
+public class RedDeAguaPotable {
+
+	private ArbolGeneral<Integer> arbol;
+	
+	public static void main(String[] args)
+	{
+
+	}
+	
+	public RedDeAguaPotable(ArbolGeneral<Integer> arbol){
+		this.arbol = arbol;
+	}
+	
+	public double minimoCaudal(double caudal){
+		ListaEnlazadaGenerica<ArbolGeneral<Integer>> hijos = arbol.getHijos();
+	}
+}

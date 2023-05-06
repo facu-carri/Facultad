@@ -1,0 +1,24 @@
+package Parciales;
+
+import tp03.ejercicio1.*;
+
+public class Parcial_Ej2 {
+	
+	public static void main(String[] args) {
+		
+	}
+	
+	public Integer sumalmparesPosOrderMayorA(ArbolBinario<Integer> ab, int limite){
+		int suma = 0;
+		if(ab.tieneHijoIzquierdo()){
+			suma += sumalmparesPosOrderMayorA(ab.getHijoIzquierdo(), limite);
+		}
+		if(ab.tieneHijoDerecho()){
+			suma += sumalmparesPosOrderMayorA(ab.getHijoDerecho(), limite);
+		}
+		if(ab.getDato() > limite){
+			return suma + ab.getDato();
+		}
+		return suma;
+	}
+}
