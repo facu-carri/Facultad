@@ -1,0 +1,19 @@
+package Practica6;
+
+import tp02.ejercicio2.ListaEnlazadaGenerica;
+import tp02.ejercicio2.ListaGenerica;
+import tp06.ejercicio3.Grafo;
+
+public class ParcialEjGrafo
+{
+	public ParcialEjGrafo(){
+		
+	}
+	
+	public ListaGenerica<String> devolverRecorrido(Grafo<nodoColor> grafo){
+		boolean[] visitados = new boolean[grafo.listaDeVertices().tamanio()+1];
+		ListaGenerica<String> lis = new ListaEnlazadaGenerica<String>();
+		
+		return lis;
+	}
+}

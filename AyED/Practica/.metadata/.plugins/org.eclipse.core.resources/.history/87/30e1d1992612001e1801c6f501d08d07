@@ -1,0 +1,57 @@
+package Practica6;
+
+import tp02.ejercicio2.ListaEnlazadaGenerica;
+import tp02.ejercicio2.ListaGenerica;
+import tp06.ejercicio3.Arista;
+import tp06.ejercicio3.Grafo;
+import tp06.ejercicio3.Vertice;
+
+public class ParcialEjGrafo
+{
+	public ParcialEjGrafo(){
+		
+	}
+	
+	public ListaGenerica<String> devolverRecorrido(Grafo<nodoColor> grafo){
+		boolean[] visitados = new boolean[grafo.listaDeVertices().tamanio()+1];
+		ListaGenerica<String> ret = new ListaEnlazadaGenerica<String>();
+		String origen = "A";
+		String destino = "D";
+		Vertice<nodoColor> vOrig = buscarVertice(grafo, origen);
+		Vertice<nodoColor> vDest = buscarVertice(grafo, destino);
+		if(vOrig != null && vDest != null)
+			buscarCamino(grafo, vOrig, vDest, null, ret, visitados);
+		return ret;
+	}
+	
+	private Vertice<nodoColor> buscarVertice(Grafo<nodoColor> grafo, String letra){
+		ListaGenerica<Vertice<nodoColor>> lis = grafo.listaDeVertices();
+		lis.comenzar();
+		while(!lis.fin()){
+			Vertice<nodoColor> elem = lis.proximo();
+			if(elem.dato().equals(letra)){
+				return elem;
+			}
+		}
+		return null;
+	}
+	
+	private boolean buscarCamino(Grafo<nodoColor> grafo, Vertice<nodoColor> origen, Vertice<nodoColor> destino, String prevColor, ListaGenerica<String> ret, boolean[] visitados){
+		if(visitados[origen.getPosicion()]){
+			return false;
+		}
+		if(origen.dato().getColor() == prevColor){
+			return false;
+		}
+		visitados[origen.getPosicion()] = true;
+		boolean found = destino.dato().equals(origen.dato());
+		if(!found){
+			ListaGenerica<Arista<nodoColor>> lis = grafo.listaDeAdyacentes(origen);
+			lis.comenzar();
+			while(!lis.fin()){
+				
+			}
+		}
+		return found;
+	}
+}

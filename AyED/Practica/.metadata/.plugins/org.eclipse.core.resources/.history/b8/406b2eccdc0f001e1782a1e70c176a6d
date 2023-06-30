@@ -1,0 +1,157 @@
+package Practica6;
+
+import java.util.Vector;
+
+import tp06.ejercicio3.*;
+import tp02.ejercicio3.*;
+import tp02.ejercicio2.*;
+
+public class Recorridos<T> {
+	
+	public Recorridos(){
+		
+	}
+	
+	public ListaGenerica<T> dfs(Grafo<T> grafo){
+		boolean [] visitados = new boolean[grafo.listaDeVertices().tamanio()+1];
+		ListaEnlazadaGenerica<Vertice<T>> lis = (ListaEnlazadaGenerica<Vertice<T>>) grafo.listaDeVertices();
+		ListaGenerica<T> travel = new ListaEnlazadaGenerica<T>();
+		lis.comenzar();
+		while(!lis.fin()){
+			Vertice<T> v = lis.proximo();
+			if(!visitados[v.getPosicion()]){
+				deepSearch(grafo, v, travel, visitados);
+			}
+		}
+		return travel;
+	}
+	
+	private void deepSearch(Grafo<T> grafo, Vertice<T> origen, ListaGenerica<T> ret, boolean[] marcas){
+		marcas[origen.getPosicion()] = true;
+		ret.agregarFinal(origen.dato());
+		ListaGenerica<Arista<T>> ady = grafo.listaDeAdyacentes(origen);
+		ady.comenzar();
+		while(!ady.fin()){
+			Vertice<T> destino = ady.proximo().verticeDestino();
+			if(!marcas[destino.getPosicion()]){
+				deepSearch(grafo, destino, ret, marcas);
+			}
+		}
+	}
+	
+	public ListaGenerica<T> bfs(Grafo<T> grafo){
+		ListaEnlazadaGenerica<Vertice<T>> lis = (ListaEnlazadaGenerica<Vertice<T>>)grafo.listaDeVertices();
+		boolean[] marcas = new boolean[lis.tamanio()+1];
+		ListaGenerica<T> travel = new ListaEnlazadaGenerica<T>();
+		lis.comenzar();
+		while(!lis.fin()){
+			Vertice<T> v = lis.proximo();
+			if(!marcas[v.getPosicion()]){
+				breathSearch(grafo, v, travel, marcas);
+			}
+		}
+		return travel;
+	}
+	
+	private void breathSearch(Grafo<T> grafo, Vertice<T> v, ListaGenerica<T> travel, boolean[] marcas){
+		ColaGenerica<Vertice<T>> cola = new ColaGenerica<Vertice<T>>();
+		ListaGenerica<Arista<T>> ady;
+		marcas[v.getPosicion()] = true;
+		cola.encolar(grafo.listaDeVertices().elemento(v.getPosicion()));
+		while(!cola.esVacia()){
+			Vertice<T> elem = cola.desencolar();
+			ady = grafo.listaDeAdyacentes(elem);
+			ady.comenzar();
+			while(!ady.fin()){
+				Vertice<T> dest = ady.proximo().verticeDestino();
+				if(!marcas[dest.getPosicion()]){
+					marcas[dest.getPosicion()] = true;
+					cola.encolar(dest);
+				}
+			}
+		}
+	}
+	
+	private int infectar(Grafo<T> grafo, Vertice<T> v){
+		boolean[] infectadas = new boolean[grafo.listaDeVertices().tamanio()+1];
+		int tiempo = 0;
+		infectadas[v.getPosicion()] = true;
+		ListaGenerica<Arista<T>> ady;
+		ColaGenerica<Vertice<T>> cola = new ColaGenerica<Vertice<T>>();
+		cola.encolar(v);
+		cola.encolar(null);
+		while(!cola.esVacia()){
+			Vertice<T> elem = cola.desencolar();
+			if(elem != null){
+				ady = grafo.listaDeAdyacentes(elem);
+				ady.comenzar();
+				while(!ady.fin()){
+					Vertice<T> dest = ady.proximo().verticeDestino();
+					if(!infectadas[dest.getPosicion()]){
+						infectadas[dest.getPosicion()] = true;
+						cola.encolar(dest);
+					}
+				}
+			}else if(!cola.esVacia()){
+				tiempo++;
+				cola.encolar(null);
+			}
+		}
+		return tiempo;
+	}
+	
+	private ListaGenerica<ListaGenerica<Vertice<T>>> dfsParcial(Grafo<T> grafo){
+		boolean[] marcas = new boolean[grafo.listaDeVertices().tamanio()+1];
+		ListaGenerica<ListaGenerica<Vertice<T>>> ret = new ListaEnlazadaGenerica<ListaGenerica<Vertice<T>>>();
+		ListaGenerica<Vertice<T>> lis = grafo.listaDeVertices();
+		lis.comenzar();
+		while(!lis.fin()){
+			Vertice<T> elem = lis.proximo();
+			if(!marcas[elem.getPosicion()]){
+				ListaGenerica<Vertice<T>> pathLis = new ListaEnlazadaGenerica<Vertice<T>>();
+				marcas[elem.getPosicion()] = true;
+				pathLis.agregarInicio(elem);
+				this.searchDfsParcial(grafo, Integer.parseInt(elem.dato().toString()), pathLis, ret, marcas);
+				marcas[elem.getPosicion()] = false;
+			}
+		}
+		return ret;
+	}
+	
+	private void searchDfsParcial(Grafo<T> grafo, int total, ListaGenerica<Vertice<T>> pathLis, ListaGenerica<ListaGenerica<Vertice<T>>> ret, boolean[] marcas){
+		Vertice<T> ult = pathLis.elemento(pathLis.tamanio());
+		ListaGenerica<Arista<T>> ady = grafo.listaDeAdyacentes(ult);
+		ady.comenzar();
+		while(!ady.fin())
+		{
+			Vertice<T> elem = ady.proximo().verticeDestino();
+			int totalSum = Integer.parseInt(elem.dato().toString()) + total;
+			if(!marcas[elem.getPosicion()]){
+				
+			}
+			if(totalSum >= 10)
+			{
+				if(totalSum > 10)
+				{
+					marcas[elem.getPosicion()] = false;
+				}
+				else
+				{
+					ret.agregarFinal(pathLis);
+					pathLis.comenzar();
+					while(!pathLis.fin())
+					{
+						marcas[pathLis.proximo().getPosicion()] = false;
+					}
+					pathLis.elemento(pathLis.tamanio());
+				}
+			}
+			else if(totalSum < 10)
+			{
+				pathLis.agregarFinal(elem);
+				marcas[elem.getPosicion()] = true;
+				total = totalSum;
+			}
+		}
+	}
+}

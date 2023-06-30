@@ -1,0 +1,17 @@
+package Practica6;
+
+import tp02.ejercicio2.ListaEnlazadaGenerica;
+import tp02.ejercicio2.ListaGenerica;
+import tp06.ejercicio3.Arista;
+import tp06.ejercicio3.Grafo;
+import tp06.ejercicio3.Vertice;
+
+public class Parcial2017 {
+	public static ListaGenerica<String> caminoDistanciaMaxima(Grafo<String> ciudades, String origen, String destino, int maxDist)
+	{
+		boolean[] visitados = new boolean[ciudades.listaDeVertices().tamanio()+1];
+		ListaGenerica<String> ret = new ListaEnlazadaGenerica<String>();
+		Vertice<String> vOrig = buscarCiudad(ciudades, origen);
+		return ret;
+	}
+}

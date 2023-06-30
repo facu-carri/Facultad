@@ -47,7 +47,7 @@ begin
 	assign(txt, 'celulares.txt');
 	rewrite(a);
 	reset(txt);
-	while not eof(txt) do begin
+	while (not eof(txt)) do begin
 		ReadLn(txt, cel.code, cel.precio, cel.marca);
 		ReadLn(txt, cel.stockDisp, cel.stockMin, cel.desc);
 		ReadLn(txt, cel.nombre);

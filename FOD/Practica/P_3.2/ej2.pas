@@ -22,17 +22,25 @@ begin
 	writeln('dni'); readln(reg.dni);
 end;
 
+procedure leer(var mae:maestro; var reg:asistente);
+begin
+	if(eof(mae))then
+		reg.nro := valorAlto
+	else
+		read(mae, reg);
+end;
+
 procedure bajaLogica(var mae:maestro);
 var
 	reg:asistente;
 begin
 	leer(mae, reg);
-	while(mae.nro <> valorAlto)do
+	while(reg.nro <> valorAlto)do
 	begin
-		if(mae.nro < 1000)then
+		if(reg.nro < 1000)then
 		begin
 			reg.nombre := concat('@', reg.nombre);
-			seek(mae, filepos(mae) - 1));
+			seek(mae, filepos(mae) - 1);
 			write(mae, reg);
 		end;
 		leer(mae, reg);

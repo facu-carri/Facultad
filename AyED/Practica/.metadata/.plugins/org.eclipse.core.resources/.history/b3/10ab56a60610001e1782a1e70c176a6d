@@ -1,0 +1,29 @@
+package Practica6;
+
+import tp02.ejercicio2.ListaEnlazadaGenerica;
+import tp02.ejercicio2.ListaGenerica;
+import tp06.ejercicio3.Grafo;
+import tp06.ejercicio3.Vertice;
+
+public class visitaOslo {
+	
+	
+	public ListaGenerica<String> paseoEnBici(Grafo<String> lugares,
+			String destino, int maxTiempo, ListaGenerica<String> lugaresRestringidos){
+		ListaGenerica<String> camino = new ListaEnlazadaGenerica<String>();
+		Vertice<String> origen = buscarVertice(lugares, "Ayuntamiento");
+		return camino;
+	}
+	
+	private Vertice<String> buscarVertice(Grafo<String> lugares, String lugar){
+		ListaGenerica<Vertice<String>> lis = lugares.listaDeVertices();
+		lis.comenzar();
+		while(!lis.fin()){
+			Vertice<String> elem = lis.proximo();
+			if(elem.dato().equals(elem.dato())){
+				return elem;
+			}
+		}
+		return null;
+	}
+}

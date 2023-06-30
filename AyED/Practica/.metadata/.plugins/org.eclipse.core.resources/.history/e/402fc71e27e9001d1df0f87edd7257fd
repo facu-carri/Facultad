@@ -1,8 +1,0 @@
-package Practica4;
-
-public class AreaEmpresa {
-
-	private String nombre;
-	private int retardo;
-	
-}

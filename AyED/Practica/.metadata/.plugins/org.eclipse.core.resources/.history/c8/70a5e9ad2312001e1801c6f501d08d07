@@ -1,0 +1,15 @@
+package Practica6;
+
+import tp02.ejercicio2.ListaGenerica;
+import tp06.ejercicio3.Grafo;
+
+public class ParcialEjGrafo
+{
+	public ParcialEjGrafo(){
+		
+	}
+	
+	public ListaGenerica<nodoColor> devolverRecorrido(Grafo<String> grafo){
+		return null
+	}
+}

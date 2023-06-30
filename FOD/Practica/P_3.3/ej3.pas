@@ -55,13 +55,13 @@ begin
 	leer(mae, regm);
 	if(regm.codigo <> valorAlto) and (regm.codigo <> 0)then
 	begin
-		seek(mae, regm.codigo * -1);//voy a la pos de la baja
-		leer(mae, regm);//leo el registro que está de baja
-		pos := regm.codigo;//guardo el indice (porque apunta al siguiente)
-		seek(mae, filepos(mae) - 1);//luego de leer, voy una posicion menos
-		write(mae, reg);//escribo en la baja, el nuevo registro (alta)
+		seek(mae, regm.codigo * -1);	//voy a la pos de la baja
+		leer(mae, regm);				//leo el registro que está de baja
+		pos := regm.codigo;				//guardo el indice (porque apunta al siguiente)
+		seek(mae, filepos(mae) - 1);	//luego de leer, voy una posicion menos
+		write(mae, reg);				//escribo en la baja, el nuevo registro (alta)
 		seek(mae, 0);
-		regm.codigo := pos;//reutilizo el regm y le asigno el indice
+		regm.codigo := pos;				//reutilizo el regm y le asigno el indice
 		write(mae, regm);
 	end;
 	//else begin (en el ejercicio dice "No hay espacio disponible"
@@ -108,17 +108,17 @@ begin
 	end;
 	if(reg.codigo <> valorAlto)then
 	begin
-		pos := filepos(mae) - 1;//guardo la posicion de baja en pos
+		pos := filepos(mae) - 1;		//guardo la posicion de baja en pos
 		seek(mae, 0);
 		leer(mae, reg);
-		ceroPos := reg.codigo;//guardo el indice que está en cero, en ceroPos
-		seek(mae, filepos(mae) - 1);// == seek(mae, 0); again (porque leí)
-		reg.codigo := pos * -1;//utilizo reg y le asigno el indice * -1
-		write(mae, reg);//escribo en la posicion 0
+		ceroPos := reg.codigo;			//guardo el indice que está en cero, en ceroPos
+		seek(mae, filepos(mae) - 1);	// == seek(mae, 0); again (porque leí)
+		reg.codigo := pos * -1;			//utilizo reg y le asigno el indice * -1
+		write(mae, reg);				//escribo en la posicion 0
 		
 		seek(mae, pos);
 		reg.codigo := ceroPos;
-		write(mae, reg);//escribo en el indice
+		write(mae, reg);				//escribo en el indice
 		//es un idea y vuelta entre cero y la posicion de la baja ¿se puede optimizar?
 	end;
 	close(mae);

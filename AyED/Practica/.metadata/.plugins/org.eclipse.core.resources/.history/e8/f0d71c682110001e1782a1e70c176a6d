@@ -1,0 +1,11 @@
+package Practica6;
+
+import tp02.ejercicio2.ListaGenerica;
+import tp06.ejercicio3.Grafo;
+
+public class ParcialTema1 {
+	
+	public ListaGenerica<ListaGenerica<String>> resolver(Grafo<String> ciudades, String origen, String destino, int maxKilometros){
+		boolean[] visitados = new boolean[ciudades.listaDeVertices().tamanio()+1];
+	}
+}

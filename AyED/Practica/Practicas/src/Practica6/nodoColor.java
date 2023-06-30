@@ -1,0 +1,33 @@
+package Practica6;
+
+public class nodoColor {
+	
+	private String dato;
+	
+	private String color;
+	
+	public nodoColor(String dato, String color){
+		this.color = color;
+		this.dato = dato;
+	}
+	
+	public void setDato(String dato){
+		this.dato = dato;
+	}
+	
+	public void setColor(String color){
+		this.color = color;
+	}
+	
+	public String getDato(){
+		return this.dato;
+	}
+	
+	public String getColor(){
+		return this.color;
+	}
+	
+	public boolean equals(String dato){
+		return this.dato == dato;
+	}
+}

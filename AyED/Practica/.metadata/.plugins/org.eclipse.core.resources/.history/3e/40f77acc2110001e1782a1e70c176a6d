@@ -1,0 +1,29 @@
+package Practica6;
+
+import tp02.ejercicio2.ListaEnlazadaGenerica;
+import tp02.ejercicio2.ListaGenerica;
+import tp06.ejercicio3.Grafo;
+import tp06.ejercicio3.Vertice;
+
+public class ParcialTema1 {
+	
+	public ListaGenerica<ListaGenerica<String>> resolver(Grafo<String> ciudades, String origen, String destino, int maxKilometros){
+		boolean[] visitados = new boolean[ciudades.listaDeVertices().tamanio()+1];
+		ListaGenerica<ListaGenerica<String>> ret = new ListaEnlazadaGenerica<ListaGenerica<String>>();
+		ListaGenerica<String> pathList = new ListaEnlazadaGenerica<String>();
+		Vertice<String> vOrig = buscarCiudad(ciudades, origen);
+		Vertice<String> vDest = buscarCiudad(ciudades, destino);
+		if(vOrig != null && vDest != null){
+			
+		}
+		return ret;
+	}
+	
+	private Vertice<String> buscarCiudad(Grafo<String> ciudades, String ciudad){
+		ListaGenerica<Vertice<String>> lis = ciudades.listaDeVertices();
+		lis.comenzar();
+		while(!lis.fin()){
+			
+		}
+	}
+}

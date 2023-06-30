@@ -1,0 +1,45 @@
+package Practica6;
+
+import tp02.ejercicio2.*;
+import tp06.ejercicio3.*;
+
+public class Mapa {
+	private Grafo<String> mapaCiudades;
+	
+	public Mapa(Grafo<String> grafo){
+		this.mapaCiudades = grafo;
+	}
+	
+	public ListaGenerica<String> devolverCamino(String ciudad1, String ciudad2){
+		boolean[] marcas = new boolean[mapaCiudades.listaDeVertices().tamanio()+1];
+		ListaGenerica<String> ret = new ListaEnlazadaGenerica<String>();
+		Vertice<String> start = buscarVertice(ciudad1);
+		if(start != null)
+			processMap(start, ret, marcas);
+		return ret;
+	}
+	
+	private Vertice<String> buscarVertice(String ciudad){
+		ListaGenerica<Vertice<String>> lver = mapaCiudades.listaDeVertices();
+		lver.comenzar();
+		while(!lver.fin()){
+			Vertice<String> elem = lver.proximo();
+			if(elem.dato().equals(ciudad)){
+				return elem;
+			}
+		}
+		return null;
+	}
+	
+	private void processMap(Vertice<String> origen, ListaGenerica<String> ret, boolean[] marcas)
+	{
+		ListaGenerica<Arista<String>> ady = grafo.listaDeAdyacentes(origen);
+		marcas[origen.getPosicion()] = true;
+		ret.agregarFinal(origen.dato());
+		if(ady.esVacia()){
+			
+		}else{
+			
+		}
+	}
+}

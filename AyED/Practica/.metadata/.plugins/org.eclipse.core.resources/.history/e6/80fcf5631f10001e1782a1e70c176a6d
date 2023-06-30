@@ -1,0 +1,68 @@
+package Practica6;
+
+import tp02.ejercicio2.ListaEnlazadaGenerica;
+import tp02.ejercicio2.ListaGenerica;
+import tp06.ejercicio3.Arista;
+import tp06.ejercicio3.Grafo;
+import tp06.ejercicio3.Vertice;
+
+public class Parcial
+{
+	public Parcial(){
+		
+	}
+	
+	public static ListaGenerica<ListaGenerica<String>> resolver(Grafo<String> ciudades, String origen, String destino, ListaGenerica<String> evitarPasarPor)
+	{
+		ListaGenerica<ListaGenerica<String>> ret = new ListaEnlazadaGenerica<ListaGenerica<String>>();
+		ListaGenerica<String> pathList = new ListaEnlazadaGenerica<String>();
+		boolean[] visitados = new boolean[ciudades.listaDeVertices().tamanio()+1];
+		Vertice<String> vOrig = buscarCiudad(ciudades, origen);
+		Vertice<String> vDest = buscarCiudad(ciudades, destino);
+		if(vOrig != null && vDest != null){
+			buscarCiudad(ciudades, vOrig, vDest, pathList, ret, evitarPasarPor, visitados);
+		}
+		return ret;
+	}
+	
+	private static Vertice<String> buscarCiudad(Grafo<String> grafo, String ciudad){
+		ListaGenerica<Vertice<String>> lis = grafo.listaDeVertices();
+		lis.comenzar();
+		while(!lis.fin()){
+			Vertice<String> elem = lis.proximo();
+			if(elem.dato().equals(ciudad)){
+				return elem;
+			}
+		}
+		return null;
+	}
+	
+	private static boolean buscarCiudad(Grafo<String> grafo, Vertice<String> origin,
+			Vertice<String> dest, ListaGenerica<String> pathList,
+			ListaGenerica<ListaGenerica<String>> ret, ListaGenerica<String> skip,
+			boolean[] visitados)
+	{
+		if(visitados[origin.getPosicion()]){
+			return false;
+		}
+		if(skip.incluye(origin.dato())){
+			return false;
+		}
+		boolean found = origin.dato().equals(dest.dato());
+		pathList.agregarFinal(origin.dato());
+		if(!found){
+			pathList.agregarInicio(origin.dato());
+			ListaGenerica<Arista<String>> ady = grafo.listaDeAdyacentes(origin);
+			ady.comenzar();
+			while(!ady.fin()){
+				Arista<String> arista = ady.proximo();
+				visitados[origin.getPosicion()] = true;
+				buscarCiudad(grafo, arista.verticeDestino(), dest, pathList.clonar(), ret, skip, visitados);
+				//visitados[origin.getPosicion()] = false;
+			}
+		}else{
+			ret.agregarFinal(pathList);
+		}
+		return found;
+	}
+}

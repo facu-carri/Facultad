@@ -1,8 +1,0 @@
-package Parciales;
-
-public class RedDeAguaPotable {
-
-	public static void main(String[] args) {
-
-	}
-}

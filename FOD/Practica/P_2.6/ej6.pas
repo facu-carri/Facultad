@@ -81,7 +81,7 @@ begin
 			leerMaestro(mae, regm);
 		end;
 		regm.fallecidos := regm.fallecidos + min.fallecidos;
-		regm.recuperados := regm.recuperados + min.recuperados;
+		regm.casos_rec := regm.casos_rec + min.casos_rec;
 		regm.casos_act := min.casos_act;
 		regm.casos_nue := min.casos_nue;
 		seek(mae, filepos(mae) - 1);

@@ -1,0 +1,34 @@
+package Practica6;
+
+import tp02.ejercicio2.ListaEnlazadaGenerica;
+import tp02.ejercicio2.ListaGenerica;
+import tp06.ejercicio3.Grafo;
+import tp06.ejercicio3.Vertice;
+
+public class ParcialEjGrafo
+{
+	public ParcialEjGrafo(){
+		
+	}
+	
+	public ListaGenerica<String> devolverRecorrido(Grafo<nodoColor> grafo){
+		boolean[] visitados = new boolean[grafo.listaDeVertices().tamanio()+1];
+		ListaGenerica<String> ret = new ListaEnlazadaGenerica<String>();
+		String origen = "A";
+		String destino = "D";
+		
+		buscarCamino("A")
+		return ret;
+	}
+	
+	private Vertice<nodoColor> buscarVertice(Grafo<nodoColor> grafo, String letra){
+		ListaGenerica<Vertice<nodoColor>> lis = grafo.listaDeVertices();
+		lis.comenzar();
+		while(!lis.fin()){
+			Vertice<nodoColor> elem = lis.proximo();
+			if(elem.dato().equals(letra)){
+				return 
+			}
+		}
+	}
+}

@@ -88,7 +88,7 @@ begin
 	end;
 end;
 
-function searchEqual(arc:archivo, eRef:emple):Boolean;
+function searchEqual(arc:archivo; eRef:emple):Boolean;
 var eFile:emple;
 begin
 	while not eof(arc)do begin
